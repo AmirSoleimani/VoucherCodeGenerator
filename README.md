@@ -81,3 +81,8 @@ throws an error `"Not possible to generate requested number of codes."`.
 | `prefix`         | `""`           | A text appended before the code.                                                |
 | `postfix`        | `""`           | A text appended after the code.                                                 |
 | `pattern`        | `"######"`   | A pattern for codes where hashes (`#`) will be replaced with random characters. |
+
+
+### License
+
+Code released under the [MIT license](LICENSE).
