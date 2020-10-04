@@ -4,7 +4,7 @@ import (
 	"errors"
 	"reflect"
 	"testing"
-	"voucher-code-generator/vcgen"
+	"github.com/AmirSoleimani/VoucherCodeGenerator/vcgen"
 )
 
 func TestGenerator(t *testing.T) {

@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"sync"
-	"voucher-code-generator/vcgen"
+	"github.com/AmirSoleimani/VoucherCodeGenerator/vcgen"
 )
 
 func main() {
