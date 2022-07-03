@@ -6,10 +6,13 @@ Generate unique, random, and hard to guess coupon / voucher codes. Use cases: pr
 
 Just use go get.
 ```go
-    go get github.com/AmirSoleimani/VoucherCodeGenerator/vcgen
+    go get -u github.com/AmirSoleimani/VoucherCodeGenerator/vcgen
 ```
 
-### Sample
+### Tested in the following Golang releases
+All releases from Go1.13.x to Go1.18.x.
+
+### How to use
 
 ```go
 
@@ -21,35 +24,54 @@ func main() {
 
 	// normal
 	go func(wg *sync.WaitGroup) {
-		vc := vcgen.New(&vcgen.Generator{Count: 10, Pattern: "###-###-###", Charset: "123456789"})
+		defer wg.Done()
+
+		vc, _ := vcgen.NewWithOptions(
+			vcgen.SetCount(10),
+			vcgen.SetPattern("###-###-###"),
+			vcgen.SetCharset("0123456789"),
+		)
 		result, err := vc.Run()
 		if err != nil {
 			fmt.Println(err)
 		}
+
 		fmt.Println(result)
-		wg.Done()
 	}(&wg)
 
 	// with prefix
 	go func(wg *sync.WaitGroup) {
-		vcPrefix := vcgen.New(&vcgen.Generator{Count: 10, Pattern: "######", Prefix: "WELC-"})
-		result, err := vcPrefix.Run()
+		defer wg.Done()
+
+		vc, _ := vcgen.NewWithOptions(
+			vcgen.SetCount(10),
+			vcgen.SetPattern("######"),
+			vcgen.SetPrefix("WELC-"),
+		)
+		result, err := vc.Run()
 		if err != nil {
 			fmt.Println(err)
 		}
+
 		fmt.Println(result)
-		wg.Done()
 	}(&wg)
 
-	// with prefix + postfix
+	// with prefix + suffix
 	go func(wg *sync.WaitGroup) {
-		vcPrePostfix := vcgen.New(&vcgen.Generator{Count: 10, Pattern: "######", Prefix: "WELC-", Postfix: "-B"})
-		result, err := vcPrePostfix.Run()
+		defer wg.Done()
+
+		vc, _ := vcgen.NewWithOptions(
+			vcgen.SetCount(10),
+			vcgen.SetPattern("######"),
+			vcgen.SetPrefix("WELC-"),
+			vcgen.SetSuffix("-B"),
+		)
+		result, err := vc.Run()
 		if err != nil {
 			fmt.Println(err)
 		}
+
 		fmt.Println(result)
-		wg.Done()
 	}(&wg)
 
 	wg.Wait()
@@ -57,9 +79,19 @@ func main() {
 }
 ```
 
-#### Prefix and Postfix
+#### Options
+```sh
+SetLength(length uint16)
+SetCount(count uint16)
+SetCharset(charset string)
+SetPrefix(prefix string)
+SetSuffix(suffix string)
+SetPattern(pattern string)
+```
 
-You can optionally surround each generated code with a prefix and/or postfix.
+#### Prefix and Suffix
+
+You can optionally surround each generated code with a prefix and/or suffix.
 
 #### Pattern
 
@@ -75,11 +107,11 @@ throws an error `"Not possible to generate requested number of codes."`.
 
 | attribute        | default value  | description                                                                     |
 |------------------|:--------------:|---------------------------------------------------------------------------------|
-| `length`         | `6`            | Number of characters in a generated code (excluding prefix and postfix)         |
+| `length`         | `6`            | Number of characters in a generated code (excluding prefix and suffix)         |
 | `count`          | `1`            | Number of codes generated.                                                      |
 | `charset`        | `alphanumeric` | Characters that can appear in the code.                                         |
 | `prefix`         | `""`           | A text appended before the code.                                                |
-| `postfix`        | `""`           | A text appended after the code.                                                 |
+| `suffix`        | `""`           | A text appended after the code.                                                 |
 | `pattern`        | `"######"`   | A pattern for codes where hashes (`#`) will be replaced with random characters. |
 
 
