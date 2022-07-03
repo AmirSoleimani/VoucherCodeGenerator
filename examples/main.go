@@ -8,8 +8,6 @@ import (
 )
 
 func main() {
-
-	// lolipop :P
 	wg := sync.WaitGroup{}
 	wg.Add(3)
 
