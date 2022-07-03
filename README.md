@@ -17,8 +17,6 @@ All releases from Go1.13.x to Go1.18.x.
 ```go
 
 func main() {
-
-	// lolipop :P
 	wg := sync.WaitGroup{}
 	wg.Add(3)
 
