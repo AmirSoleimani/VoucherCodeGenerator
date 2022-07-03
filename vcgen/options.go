@@ -12,6 +12,7 @@ var (
 
 type Option func(*Generator) error
 
+// SetLength sets the length of the code
 func SetLength(length uint16) Option {
 	return func(g *Generator) error {
 		if length == 0 {
@@ -22,6 +23,7 @@ func SetLength(length uint16) Option {
 	}
 }
 
+// SetCount sets the count of the code
 func SetCount(count uint16) Option {
 	return func(g *Generator) error {
 		if count == 0 {
@@ -32,6 +34,7 @@ func SetCount(count uint16) Option {
 	}
 }
 
+// SetCharset sets the charset of the code
 func SetCharset(charset string) Option {
 	return func(g *Generator) error {
 		if len(charset) == 0 {
@@ -42,6 +45,7 @@ func SetCharset(charset string) Option {
 	}
 }
 
+// SetPrefix sets the prefix of the code
 func SetPrefix(prefix string) Option {
 	return func(g *Generator) error {
 		g.Prefix = prefix
@@ -49,6 +53,7 @@ func SetPrefix(prefix string) Option {
 	}
 }
 
+// SetSuffix sets the suffix of the code
 func SetSuffix(suffix string) Option {
 	return func(g *Generator) error {
 		g.Suffix = suffix
@@ -56,6 +61,7 @@ func SetSuffix(suffix string) Option {
 	}
 }
 
+// SetPattern sets the pattern of the code
 func SetPattern(pattern string) Option {
 	return func(g *Generator) error {
 		if pattern == "" {
