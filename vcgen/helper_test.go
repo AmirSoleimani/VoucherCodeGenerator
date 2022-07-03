@@ -67,7 +67,7 @@ func TestIsFeasible(t *testing.T) {
 	}
 
 	for _, v := range tables {
-		b := isFeasible(v.charset, v.pattern, v.count)
+		b := isFeasible(v.charset, v.pattern, "#", v.count)
 		if b != v.wants {
 			t.Fail()
 		}
