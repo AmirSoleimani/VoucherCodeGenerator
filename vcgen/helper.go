@@ -8,7 +8,7 @@ import (
 
 //return random int in the range min...max
 func randomInt(min, max int) int {
-	return min + rand.Intn(max-min)
+	return min + rand.Intn(1+max-min)
 }
 
 //return random char string from charset
@@ -21,10 +21,11 @@ func repeatStr(count uint16, str string) string {
 	return strings.Repeat(str, int(count))
 }
 
-func isFeasible(charset, pattern string, count uint16) bool {
-	ls := strings.Count(pattern, "#")
-	if math.Pow(float64(len(charset)), float64(ls)) >= float64(count) {
-		return true
-	}
-	return false
+func numberOfChar(str, char string) uint16 {
+	return uint16(strings.Count(str, char))
+}
+
+func isFeasible(charset, pattern, char string, count uint16) bool {
+	ls := numberOfChar(pattern, char)
+	return math.Pow(float64(len(charset)), float64(ls)) >= float64(count)
 }
