@@ -2,11 +2,11 @@
 
 Generate unique, random, and hard to guess coupon / voucher codes. Use cases: promo codes, loyalty coupons, gift vouchers, in-app purchases, referral links
 
-### Instalation
+### Installation
 
 Just use go get.
 ```go
-go get -u github.com/AmirSoleimani/VoucherCodeGenerator/vcgen
+go get -u github.com/AmirSoleimani/VoucherCodeGenerator@v1.0.1
 ```
 
 ### Tested in the following Golang releases
@@ -15,6 +15,11 @@ All releases from Go1.13.x to Go1.18.x.
 ### How to use
 
 ```go
+
+import (
+	...
+	"github.com/AmirSoleimani/VoucherCodeGenerator/vcgen"
+)
 
 func main() {
 	wg := sync.WaitGroup{}
