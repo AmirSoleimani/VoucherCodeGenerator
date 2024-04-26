@@ -6,7 +6,7 @@ Generate unique, random, and hard to guess coupon / voucher codes. Use cases: pr
 
 Just use go get.
 ```go
-go get -u github.com/AmirSoleimani/VoucherCodeGenerator@v1.0.1
+go get -u github.com/AmirSoleimani/VoucherCodeGenerator@v2.0.0
 ```
 
 ### Tested in the following Golang releases

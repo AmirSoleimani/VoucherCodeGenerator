@@ -1,5 +1,5 @@
-module github.com/AmirSoleimani/VoucherCodeGenerator
+module github.com/AmirSoleimani/VoucherCodeGenerator/examples
 
 go 1.18
 
-require github.com/AmirSoleimani/VoucherCodeGenerator/vcgen v0.0.0-20220703112721-99669bb7b84c
+require github.com/AmirSoleimani/VoucherCodeGenerator v1.0.1 // indirect
