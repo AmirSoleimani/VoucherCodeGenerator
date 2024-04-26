@@ -3,7 +3,7 @@ package vcgen_test
 import (
 	"testing"
 
-	"github.com/AmirSoleimani/VoucherCodeGenerator/vcgen"
+	vcgen "github.com/AmirSoleimani/VoucherCodeGenerator"
 )
 
 func TestGenerator(t *testing.T) {

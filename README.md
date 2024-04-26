@@ -10,7 +10,7 @@ go get -u github.com/AmirSoleimani/VoucherCodeGenerator@v1.0.1
 ```
 
 ### Tested in the following Golang releases
-All releases from Go1.13.x to Go1.18.x.
+Release `v1.0.1` was tested from Go1.13.x to Go1.18.x.
 
 ### How to use
 
@@ -18,7 +18,7 @@ All releases from Go1.13.x to Go1.18.x.
 
 import (
 	...
-	"github.com/AmirSoleimani/VoucherCodeGenerator/vcgen"
+	vcgen "github.com/AmirSoleimani/VoucherCodeGenerator"
 )
 
 func main() {

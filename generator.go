@@ -2,42 +2,40 @@ package vcgen
 
 import (
 	"errors"
-	"math/rand"
 	"strings"
-	"time"
 )
-
-var (
-	// charset types
-	numbers      = "0123456789"
-	alphabetic   = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	alphanumeric = numbers + alphabetic
-
-	// defaults
-	minCount  uint16 = 1
-	minLength uint16 = 6
-)
-
-const patternChar = "#"
 
 var (
 	ErrNotFeasible       = errors.New("Not feasible to generate requested number of codes")
 	ErrPatternIsNotMatch = errors.New("Pattern is not match with the length value")
 )
 
-// initialize random seed
-func init() {
-	rand.Seed(time.Now().UnixNano())
-}
+const (
+	// Charset types
+	CharsetNumbers      = "0123456789"
+	CharsetAlphabetic   = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	CharsetAlphanumeric = CharsetNumbers + CharsetAlphabetic
+)
+
+const (
+	// Default minimums
+	minCount  uint16 = 1
+	minLength uint16 = 6
+
+	patternChar = "#"
+)
 
 type Generator struct {
-	// Length of the code
+	// Length of the code to generate
 	Length uint16 `json:"length"`
 
 	// Count of the codes
+	// How many codes to generate
 	Count uint16 `json:"count"`
 
 	// Charset to use
+	// `CharsetNumbers`, `CharsetAlphabetic`, and `CharsetAlphanumeric`
+	// are already defined and you can use them.
 	Charset string `json:"charset"`
 
 	// Prefix of the code
@@ -47,12 +45,8 @@ type Generator struct {
 	Suffix string `json:"suffix"`
 
 	// Pattern of the code
+	// # is the placeholder for the charset
 	Pattern string `json:"pattern"`
-
-	// Suffix of the code
-	//
-	// Deprecated: use Suffix instead
-	Postfix string `json:"postfix"`
 }
 
 // Creates a new generator with options
@@ -70,55 +64,9 @@ func Default() *Generator {
 	return &Generator{
 		Length:  minLength,
 		Count:   minCount,
-		Charset: alphanumeric,
+		Charset: CharsetAlphanumeric,
 		Pattern: repeatStr(minLength, patternChar),
 	}
-}
-
-// New generator config
-//
-// Deprecated: use NewWithOptions or Default instead
-func New(i *Generator) *Generator {
-
-	// check functione entry args
-	if i == nil {
-		rps := repeatStr(minLength, "#")
-
-		// --
-		i = &Generator{
-			Length:  minLength,
-			Count:   minCount,
-			Charset: alphanumeric,
-			Pattern: rps,
-		}
-		goto AfterChecker
-	}
-
-	// check pattern
-	if i.Pattern == "" {
-		rps := repeatStr(i.Length, "#")
-		i.Pattern = rps
-	}
-
-	// check length
-	if i.Length == 0 {
-		i.Length = uint16(strings.Count(i.Pattern, "#"))
-	}
-
-	// check count
-	if i.Count == 0 {
-		i.Count = minCount
-	}
-
-	// check charset
-	if i.Charset == "" {
-		i.Charset = alphanumeric
-	}
-
-AfterChecker:
-
-	// return
-	return i
 }
 
 // Generates a list of codes
@@ -147,11 +95,6 @@ func (g *Generator) one() string {
 	}
 
 	suffix := g.Suffix
-
-	// TODO: Remove it when we deprecate Postfix
-	if g.Postfix != "" {
-		suffix = g.Postfix
-	}
 
 	return g.Prefix + strings.Join(pts, "") + suffix
 }
