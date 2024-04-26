@@ -1,6 +1,2 @@
-github.com/AmirSoleimani/VoucherCodeGenerator v1.0.1 h1:Zbk1KmwZuCeKtZ5oYfXS7LwheCFcsaCaNiwUKvjqL5o=
-github.com/AmirSoleimani/VoucherCodeGenerator v1.0.1/go.mod h1:lPdH8Qb2GbzKerIDwtPJnZva7QYcI58Q+ookPHWxvZ0=
-github.com/AmirSoleimani/VoucherCodeGenerator/vcgen v0.0.0-20220703112721-99669bb7b84c h1:XjtDnBHyGUKZGDk1/AVFCVujZNu0fptxTVsEWUe+fE4=
-github.com/AmirSoleimani/VoucherCodeGenerator/vcgen v0.0.0-20220703112721-99669bb7b84c/go.mod h1:C1kHOPhIz2FRwwJEIxVg7shHEPpYy83Ud6JZzXIKKCk=
-github.com/AmirSoleimani/VoucherCodeGenerator/vcgen v0.0.0-20220706103434-bcb25b5bff9c h1:D6IsNwzhyrCX23DOMj21rSWSLPXAHCg4EN09kGWThKM=
-github.com/AmirSoleimani/VoucherCodeGenerator/vcgen v0.0.0-20220706103434-bcb25b5bff9c/go.mod h1:C1kHOPhIz2FRwwJEIxVg7shHEPpYy83Ud6JZzXIKKCk=
+github.com/AmirSoleimani/VoucherCodeGenerator/v2 v2.0.0 h1:pLgMXV11hdaWAv246Th0tNXAhlzgDEvfD/swnuNL7zo=
+github.com/AmirSoleimani/VoucherCodeGenerator/v2 v2.0.0/go.mod h1:vzbt8TWzOb7D1xlR5RZLbLhgTe/99Jg/Ks4cABVgEmc=

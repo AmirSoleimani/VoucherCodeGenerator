@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/AmirSoleimani/VoucherCodeGenerator/vcgen"
+	vcgen "github.com/AmirSoleimani/VoucherCodeGenerator/v2"
 )
 
 func main() {
